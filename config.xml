@@ -5,10 +5,11 @@
         Union Sports News Magazine App
     </description>
     <author email="morne@wincomdesigns.com" href="http://www.wincomdesigns.com">
-        Morne Zeelie
+        Wincom Designs
     </author>
     <content src="index.html" />
     <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
+    <gap:plugin name="com.adobe.plugins.pushplugin" />
 </widget>
