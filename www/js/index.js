@@ -47,7 +47,7 @@ var app = {
         console.log('Received Event: ' + id);
 
         var pushNotification = window.plugins.pushNotification;
-        pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"447946943373-vv481cl08of7c649p29lepcaombs22qj.apps.googleusercontent.com","ecb":"app.onNotificationGCM"});
+        pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"447946943373","ecb":"app.onNotificationGCM"});
     },
     // result contains any message sent from the plugin call
     successHandler: function(result) {
