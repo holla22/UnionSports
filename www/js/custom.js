@@ -1,9 +1,9 @@
-//document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
-    ///function onDeviceReady() {
-      jQuery(document).ready(function($) {
+    function onDeviceReady() {
+      /*jQuery(document).ready(function($) {*/
 
         //console.log('document ready');
 
@@ -11,7 +11,7 @@
         $('#main-tabs').append(loader);
 
           jQuery.ajax({
-                          
+
                           url: 'http://www.unionsportsmag.co.za/api/?q=latest&callback=?', // The callback=? part is very importatnt to use in you get URL
                           crossDomain:true,
                           timeout:120000,
@@ -26,7 +26,7 @@
                             $('#main-tabs').empty();
                             $('.pages').remove();
 
-                            $.each(data, function(i,item){ 
+                            $.each(data, function(i,item){
                                 //alert(item.title);
                                  //console.log(item);
                                 if(item.category == "In Motion") {
@@ -44,7 +44,7 @@
                               var content = '<div data-role="page" id="page'+ i +'" class="pages"><div data-role="header"><h1>'+ item.title +'</h1></div><div data-role="content" class="single-content"><h1 class="single-heading">'+ item.title +'</h1>'+ item.content +'</div><div data-role="footer"><img src="images/small-logo.png" class="footer-logo" style="width:50px; float:left;position: relative;left: 20px;top: 4px;"><h3>Union Sports Magazine</h3></div></div>';
                             $('#main-tabs').append(news);
                             $('#page').after(content);
-                            
+
                             });
                             /*$('.subcontent').html('news loaded');*/
                           },
@@ -75,10 +75,10 @@
         var loader = '<img src="images/ajax-loader.gif" class="loader" width="50" height="50">';
         $('#main-tabs').append(loader);
 
-    
+
 
     jQuery.ajax({
-                          
+
                           url: 'http://www.unionsportsmag.co.za/api/?q=headline&callback=?', // The callback=? part is very importatnt to use in you get URL
                           crossDomain:true,
                           timeout:120000,
@@ -94,7 +94,7 @@
                             $('#main-tabs').empty();
                             $('.pages').remove();
 
-                            $.each(data, function(i,item){ 
+                            $.each(data, function(i,item){
                                 //alert(item.title);
 
                                 if(item.category == "In Motion") {
@@ -112,7 +112,7 @@
                               var content = '<div data-role="page" id="page'+ i +'" class="pages"><div data-role="header"><h1>'+ item.title +'</h1></div><div data-role="content" class="single-content"><h1 class="single-heading">'+ item.title +'</h1>'+ item.content +'</div><div data-role="footer"><img src="images/small-logo.png" class="footer-logo" style="width:50px; float:left;position: relative;left: 20px;top: 4px;"><h3>Union Sports Magazine</h3></div></div>';
                             $('#main-tabs').append(news);
                             $('#page').after(content);
-                            
+
                             });
                             /*$('.subcontent').html('news loaded');*/
                           },
@@ -134,7 +134,7 @@ $('.3rddgree').on('tap', function(e){
     $('.headli').removeClass('current');
     $('.degreeli').addClass('current');
     $('.degreeli').css({height:58});
-    
+
 
   }
 
@@ -146,7 +146,7 @@ $('.3rddgree').on('tap', function(e){
         $('#main-tabs').append(loader);
 
     jQuery.ajax({
-                          
+
                           url: 'http://www.unionsportsmag.co.za/api/?q=degree&callback=?', // The callback=? part is very importatnt to use in you get URL
                           crossDomain:true,
                           timeout:120000,
@@ -161,7 +161,7 @@ $('.3rddgree').on('tap', function(e){
                             $('#main-tabs').empty();
                             $('.pages').remove();
 
-                            $.each(data, function(i,item){ 
+                            $.each(data, function(i,item){
                                 //alert(item.title);
 
                                 if(item.category == "In Motion") {
@@ -179,7 +179,7 @@ $('.3rddgree').on('tap', function(e){
                               var content = '<div data-role="page" id="page'+ i +'" class="pages"><div data-role="header"><h1>'+ item.title +'</h1></div><div data-role="content" class="single-content"><h1 class="single-heading">'+ item.title +'</h1>'+ item.content +'</div><div data-role="footer"><img src="images/small-logo.png" class="footer-logo" style="width:50px; float:left;position: relative;left: 20px;top: 4px;"><h3>Union Sports Magazine</h3></div></div>';
                             $('#main-tabs').append(news);
                             $('#page').after(content);
-                            
+
                             });
                             /*$('.subcontent').html('news loaded');*/
                           },
@@ -197,7 +197,7 @@ $('.3rddgree').on('tap', function(e){
 
           if (!$('.homeli').hasClass('current')) {
 
-            
+
             $('.headli').removeClass('current');
             $('.degreeli').removeClass('current');
             $('.homeli').addClass('current');
@@ -212,7 +212,7 @@ $('.3rddgree').on('tap', function(e){
             $('#main-tabs').append(loader);
 
         jQuery.ajax({
-                          
+
                           url: 'http://www.unionsportsmag.co.za/api/?q=latest&callback=?', // The callback=? part is very importatnt to use in you get URL
                           crossDomain:true,
                           timeout:120000,
@@ -227,7 +227,7 @@ $('.3rddgree').on('tap', function(e){
                             $('#main-tabs').empty();
                             $('.pages').remove();
 
-                            $.each(data, function(i,item){ 
+                            $.each(data, function(i,item){
                                 //alert(item.title);
                                  //console.log(item);
                                 if(item.category == "In Motion") {
@@ -245,7 +245,7 @@ $('.3rddgree').on('tap', function(e){
                               var content = '<div data-role="page" id="page'+ i +'" class="pages"><div data-role="header"><h1>'+ item.title +'</h1></div><div data-role="content" class="single-content"><h1 class="single-heading">'+ item.title +'</h1>'+ item.content +'</div><div data-role="footer"><img src="images/small-logo.png" class="footer-logo" style="width:50px; float:left;position: relative;left: 20px;top: 4px;"><h3>Union Sports Magazine</h3></div></div>';
                             $('#main-tabs').append(news);
                             $('#page').after(content);
-                            
+
                             });
                             /*$('.subcontent').html('news loaded');*/
                           },
@@ -256,5 +256,5 @@ $('.3rddgree').on('tap', function(e){
         });
 
 
-   // }
-});
+   }
+/*});*/
