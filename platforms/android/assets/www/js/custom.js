@@ -41,10 +41,8 @@ var pushNotification;
 
 
 
-
-
-
         var loader = '<img src="images/ajax-loader.gif" class="loader" width="50" height="50">';
+        $('.loader').remove(); // remove before adding
         $('#main-tabs').append(loader);
 
           jQuery.ajax({
