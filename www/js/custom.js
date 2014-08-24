@@ -17,11 +17,11 @@ var pushNotification;
 
           //alert(device.platform);
 
-         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
+         /*if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {*/
                   pushNotification.register(successHandler, errorHandler, {"senderID":"447946943373","ecb":"onNotification"});    // required!
-          } else {
+          /*} else {
                       pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});  // required!
-                  }
+                  }*/
         }
         catch(err)
         {
