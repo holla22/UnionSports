@@ -1,11 +1,48 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
+var pushNotification;
+
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
     function onDeviceReady() {
       /*jQuery(document).ready(function($) {*/
 
         //console.log('document ready');
+
+       /* PUsh Notification code here */
+
+       try
+        {
+          pushNotification = window.plugins.pushNotification;
+
+          //alert(device.platform);
+
+         if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
+                  pushNotification.register(successHandler, errorHandler, {"senderID":"447946943373","ecb":"onNotification"});    // required!
+          } else {
+                      pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});  // required!
+                  }
+        }
+        catch(err)
+        {
+          txt="There was an error on this page.\n\n";
+          txt+="Error description: " + err.message + "\n\n";
+          alert(txt);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         var loader = '<img src="images/ajax-loader.gif" class="loader" width="50" height="50">';
         $('#main-tabs').append(loader);
@@ -256,5 +293,104 @@ $('.3rddgree').on('tap', function(e){
         });
 
 
-   }
+   };
+
+   /* MOre Push plugin stuff */
+   // handle GCM notifications for Android
+   function onNotification(e) {
+                //alert('RECEIVED:' + e.event);
+
+                switch( e.event )
+                {
+                    case 'registered':
+                          if ( e.regid.length > 0 )
+                          {
+                            //alert('REGISTERED -> REGID:' + e.regid );
+                            // Your GCM push server needs to know the regID before it can push to this device
+                            // here is where you might want to send it the regID for later use.
+                            //alert("regID = " + e.regid);
+
+                            /*
+                              This sends the regId to the server to save in DB for later push notifications
+                            */
+                                jQuery.ajax({
+                                          url: 'http://www.unionsportsmag.co.za/api/?regid='+ e.regid +'&callback=?',
+                                          crossDomain:true,
+                                          timeout:120000,
+                                          type: 'GET',
+                                          dataType: 'jsonp',
+                                          jsonp: 'jsonp',
+                                          complete: function(xhr, textStatus) {
+                                            //called when complete
+                                          },
+                                          success: function(data, textStatus, xhr) {
+
+                                          },
+                                          error: function(xhr, textStatus, errorThrown) {
+                                            console.log(errorThrown);
+                                          }
+                                });
+                          } // end of
+                    break;
+
+                    case 'message':
+                      // if this flag is set, this notification happened while we were in the foreground.
+                      // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+                      if (e.foreground)
+                      {
+                        //alert('--INLINE NOTIFICATION--');
+
+                          // on Android soundname is outside the payload.
+                          // On Amazon FireOS all custom attributes are contained within payload
+                          var soundfile = e.soundname || e.payload.sound;
+                          // if the notification contains a soundname, play it.
+                          // playing a sound also requires the org.apache.cordova.media plugin
+                          var my_media = new Media("/android_asset/www/"+ soundfile);
+
+                        my_media.play();
+                      }
+                      else
+                      { // otherwise we were launched because the user touched a notification in the notification tray.
+                        if (e.coldstart){
+                          //alert('<li>--COLDSTART NOTIFICATION--' + '</li>');
+                        }
+                        else{
+                        //alert('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+                        }
+                      }
+
+                        //alert('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+                        //android only
+                        //alert('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+                        //amazon-fireos only
+                        //alert('<li>MESSAGE -> TIMESTAMP: ' + e.payload.timeStamp + '</li>');
+                    break;
+
+                    case 'error':
+                          //alert('<li>ERROR -> MSG:' + e.msg + '</li>');
+                    break;
+
+                    default:
+                          //alert('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+                    break;
+                }
+            }
+
+
+            function tokenHandler (result) {
+                //alert('<li>token: '+ result +'</li>');
+                // Your iOS push server needs to know the token before it can push to this device
+                // here is where you might want to send it the token for later use.
+            }
+
+            function successHandler (result) {
+                //alert('<li>success:'+ result +'</li>');
+            }
+
+            function errorHandler (error) {
+               //alert('<li>error:'+ error +'</li>');
+            }
+
+      document.addEventListener('deviceready', onDeviceReady, true);
+
 /*});*/
