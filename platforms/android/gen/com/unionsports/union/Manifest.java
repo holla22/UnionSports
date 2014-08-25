@@ -9,6 +9,6 @@ package com.unionsports.union;
 
 public final class Manifest {
     public static final class permission {
-        public static final String C2D_MESSAGE="com.unionsports.union.permission.C2D_MESSAGE";
+        public static final String C2D_MESSAGE="com.hello.world.permission.C2D_MESSAGE";
     }
 }

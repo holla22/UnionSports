@@ -15,11 +15,12 @@ ul.main-menu li {
     list-style: none;
 	padding: 10px;
 	font-size: 13px;
-	
+
 }
 
 .ui-listview li {
 	background-image: url('../images/home-_-latest-bg.png');
+    background-color: #000;
 	border-bottom: 1px solid #FFFFFF;
 	padding-top: 130px;
 }
