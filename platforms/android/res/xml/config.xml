@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.unionsports.union" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Hello Cordova</name>
+    <name>UnionSports</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Union Sports News Magazine App
     </description>
     <preference name="loglevel" value="DEBUG" />
     <feature name="App">
@@ -11,13 +11,21 @@
     <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
-    <name>Union Sports Magazine</name>
-    <description>
-        Union Sports News Magazine App
-    </description>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
     <author email="morne@wincomdesigns.com" href="http://www.wincomdesigns.com">
         Wincom Designs
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
 </widget>
